@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: grpc-server
+  name: grpc-server
+  namespace: default
+spec:
+  ports:
+  - port: 5287
+    protocol: TCP
+    targetPort: 5287
+  selector:
+    app: grpc-server

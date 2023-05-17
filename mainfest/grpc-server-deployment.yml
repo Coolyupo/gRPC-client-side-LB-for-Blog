@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: grpc-server
+  name: grpc-server
+  namespace: default
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: grpc-server
+  template:
+    metadata:
+      labels:
+        app: grpc-server
+    spec:
+      containers:
+      - image: coolyupo/grpc-server-greeter:1.0
+        name: grpc

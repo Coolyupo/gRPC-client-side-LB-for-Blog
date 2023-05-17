@@ -1,0 +1,24 @@
+## https://docs.microsoft.com/en-us/aspnet/core/grpc/loadbalancing?view=aspnetcore-6.0
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: grpc-client
+  name: grpc-client
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grpc-client
+  template:
+    metadata:
+      labels:
+        app: grpc-client
+    spec:
+      containers:
+      - image: coolyupo/grpc-client-greeter:1.0
+        name: grpc
+        env:
+        - name: grpcurl
+          value: "dns:///grpc-server-headless.default.svc:5287"

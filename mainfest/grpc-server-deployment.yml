@@ -16,5 +16,13 @@ spec:
         app: grpc-server
     spec:
       containers:
-      - image: coolyupo/grpc-server-greeter:1.0
+      - image: coolyupo/grpc-server-greeter:2.1
         name: grpc
+        livenessProbe:
+          grpc:
+            port: 5287
+          initialDelaySeconds: 10
+        readinessProbe:
+          grpc:
+            port: 5287
+          initialDelaySeconds: 10
